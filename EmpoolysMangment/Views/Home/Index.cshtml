@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Employes List";
+}
+<div class="card-deck">
+    @foreach(var empoylee in Model)
+    {
+        var photopth = "~/Images/" + (empoylee.PhotoPath ?? "user.png");
+
+        <div class="card m-3" style="min-width:18rem ; max-height:30.5%;"  >
+            <div class="card-header">
+                <h3>@empoylee.Name</h3>
+            </div>
+            <img class="card-img-top imagesThuba" src="@photopth"
+                 asp-append-version="true"/>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="details" asp-route-id="@empoylee.Id"
+                   class="btn btn-primary m-1">Views</a>
+                <a asp-controller="home" asp-action="Edit" asp-route-id="@empoylee.Id"
+                   class="btn btn-primary m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delet</a>
+            </div>
+        </div>
+    }
+</div>
