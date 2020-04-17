@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmpoolysMangment.Data;
 using EmpoolysMangment.Models;
+using EmpoolysMangment.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +33,21 @@ namespace EmpoolysMangment
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(_configuration.GetConnectionString("DevConnectionString")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(option =>
+            {
+                option.Password.RequiredLength = 10;
+                option.Password.RequiredUniqueChars = 3;
+            }).AddEntityFrameworkStores<AppDbContext>();
 
+          /*  services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                  .RequireAuthenticatedUser()
+                  .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();*/
+                
+            
             services.AddScoped<IEmpoyleeRepository, SQLEmpoyleeRepository>();
 
         }

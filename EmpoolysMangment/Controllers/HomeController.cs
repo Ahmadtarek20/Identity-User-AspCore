@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmpoolysMangment.Models;
 using EmpoolysMangment.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmpoolysMangment.Controllers
 {
+    
+
     public class HomeController : Controller
     {
         private IEmpoyleeRepository _empoyleeRepository;
@@ -26,6 +29,7 @@ namespace EmpoolysMangment.Controllers
            var model = _empoyleeRepository.GetEmployees();
             return View(model);
         }
+        [Authorize]
         public ViewResult Details(int? id)
         {
            // throw new Exception("Error is Detaild View");
@@ -45,11 +49,13 @@ namespace EmpoolysMangment.Controllers
 
         }
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create(EmployeeCreatViewModel model)
         {
             
@@ -69,6 +75,7 @@ namespace EmpoolysMangment.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee employee = _empoyleeRepository.GetEmployee(id);
@@ -83,6 +90,7 @@ namespace EmpoolysMangment.Controllers
             return View(emplooysEditViewModel);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EmplooysEditViewModel model)
         {
 

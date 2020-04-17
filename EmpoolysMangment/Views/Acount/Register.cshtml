@@ -5,32 +5,32 @@
     ViewBag.Title = " Register";
 }
 
-    <div class="row">
-        <div class="col-mmd-12">
-            <form method="post">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <labe asp-for="Email"></labe>
-                    <input class="form-control" asp-for="Email" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group ">
-                    <label asp-for="Password"></label>
-                    <input class="form-control" asp-for="Password" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ConfirmPassword"></label>
-                    <input class="form-control" asp-for="ConfirmPassword" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button class="btn btn-primary" type="submit">Regester</button>
-                    </div>
-                </div>
-
-            </form>
+    <form method="post" class="mt-3">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Email"></label>
+            <div class="col-sm-10"> <input class="form-control" placeholder="Email" asp-for="Email" /></div>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-    </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Password"></label>
+            <div class="col-sm-10"><input class="form-control" placeholder="Password" asp-for="Password" /></div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="ConfirmPassword"></label>
+            <div class="col-sm-10"><input class="form-control" placeholder="ConfirmPassword" asp-for="ConfirmPassword" /></div>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="city"></label>
+            <div class="col-sm-10"><input class="form-control" placeholder="city" asp-for="city" /></div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button class="btn btn-primary" type="submit">Regester</button>
+            </div>
+        </div>
+
+    </form>

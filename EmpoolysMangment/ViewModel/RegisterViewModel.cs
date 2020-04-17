@@ -21,6 +21,7 @@ namespace EmpoolysMangment.ViewModel
         [Compare("Password",
             ErrorMessage ="Password and confirm Password")]
         public string ConfirmPassword { get; set; }
-       
+        public string city { get; set; }
+
     }
 }
