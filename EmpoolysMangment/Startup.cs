@@ -39,15 +39,26 @@ namespace EmpoolysMangment
                 option.Password.RequiredUniqueChars = 3;
             }).AddEntityFrameworkStores<AppDbContext>();
 
-          /*  services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                  .RequireAuthenticatedUser()
-                  .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();*/
-                
-            
+            /*  services.AddMvc(options =>
+              {
+                  var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                  options.Filters.Add(new AuthorizeFilter(policy));
+              }).AddXmlSerializerFormatters();*/
+            services.AddAuthentication()
+                .AddGoogle(option =>
+                {
+                    option.ClientId = "186633041467-2g2tep9jjn04c6sgtkenrihndnebqafu.apps.googleusercontent.com";
+                    option.ClientSecret = "CQaazfRVqiodJz87u6Rky21Q";
+
+
+                }).AddFacebook(option =>
+                {
+                    option.AppId = "284265502572900";
+                    option.AppSecret = "110ad9977ac5f8b0e248a3001f1b09f7";
+                });
+
             services.AddScoped<IEmpoyleeRepository, SQLEmpoyleeRepository>();
 
         }

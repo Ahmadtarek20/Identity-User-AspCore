@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace EmpoolysMangment.ViewModel
 {
@@ -16,5 +18,8 @@ namespace EmpoolysMangment.ViewModel
         public string Password { get; set; }
         [Display(Name ="Remember Me")]
         public bool RememberMe { get; set; }
+
+        public string RerernUrl { get; set; }
+        public IList <AuthenticationScheme> ExternalLogin { get; set; }
     }
 }
